@@ -36,8 +36,6 @@ This system helps businesses identify unusual inventory losses by comparing expe
 
 
 
-
-
 \## Application Screenshots
 
 
@@ -108,8 +106,6 @@ This system helps businesses identify unusual inventory losses by comparing expe
 
 
 
-
-
 \## Technology Stack
 
 
@@ -130,7 +126,7 @@ This system helps businesses identify unusual inventory losses by comparing expe
 
 ```text
 
-inventory-shrinkage-app/
+inventory-shrinkage-detection-system/
 
 ├── database/
 
