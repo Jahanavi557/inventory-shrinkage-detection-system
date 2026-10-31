@@ -172,6 +172,8 @@ inventory-shrinkage-detection-system/
 
 │   ├── css/
 
+│   │   ├── bootstrap.min.css
+
 │   │   └── style.css
 
 │   ├── images/
@@ -199,6 +201,8 @@ inventory-shrinkage-detection-system/
 │   │   └── summary-details.png
 
 │   └── js/
+
+│       ├── bootstrap.bundle.min.js
 
 │       └── dashboard.js
 
