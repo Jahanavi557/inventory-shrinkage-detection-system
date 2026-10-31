@@ -1,0 +1,311 @@
+
+/* ==============================
+   GLOBAL STYLES
+================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f4f6fa;
+    color: #263238;
+}
+
+h2, h4 {
+    font-weight: 700;
+    color: #172b4d;
+}
+
+section {
+    scroll-margin-top: 25px;
+}
+
+/* ==============================
+   SIDEBAR
+================================ */
+
+.sidebar {
+    min-height: 100vh;
+    background: #172b4d;
+    color: white;
+    padding: 30px 18px;
+}
+
+.sidebar h4 {
+    color: white;
+    font-size: 23px;
+    margin-bottom: 5px;
+}
+
+.sidebar p {
+    color: #b8c7dc;
+    font-size: 13px;
+    margin-bottom: 30px;
+}
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sidebar nav a {
+    color: #dce5f2;
+    text-decoration: none;
+    padding: 12px 14px;
+    border-radius: 7px;
+    font-size: 14px;
+    transition: 0.2s ease;
+}
+
+.sidebar nav a:hover {
+    background: #29466f;
+    color: white;
+}
+
+/* ==============================
+   MAIN CONTENT
+================================ */
+
+main {
+    min-height: 100vh;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    background: white;
+    padding: 22px 25px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+}
+
+.dashboard-header h2 {
+    margin-bottom: 6px;
+}
+
+.dashboard-header p {
+    color: #758195;
+    margin-bottom: 0;
+}
+
+/* ==============================
+   SUMMARY CARDS
+================================ */
+
+.dashboard-card {
+    border: none;
+    border-radius: 12px;
+    padding: 22px;
+    min-height: 125px;
+    background: white;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.09);
+}
+
+.dashboard-card h6 {
+    color: #758195;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.dashboard-card h2 {
+    font-size: 28px;
+    margin: 0;
+}
+
+/* ==============================
+   SECTION HEADINGS
+================================ */
+
+section > h4 {
+    margin-bottom: 8px;
+}
+
+section > p {
+    font-size: 14px;
+    margin-bottom: 18px;
+}
+
+/* ==============================
+   TABLES
+================================ */
+
+.table-responsive {
+    background: white;
+    border-radius: 10px;
+}
+
+table {
+    background: white;
+    margin-bottom: 0 !important;
+    vertical-align: middle;
+}
+
+table thead th {
+    background: #eaf0f8 !important;
+    color: #263b5b;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+    padding: 14px 12px !important;
+}
+
+table tbody td {
+    font-size: 13px;
+    color: #455468;
+    padding: 12px !important;
+}
+
+table tbody tr:hover {
+    background: #f6f9fd;
+}
+
+/* ==============================
+   FORMS
+================================ */
+
+.card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+
+.form-label {
+    color: #34445c;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.form-control,
+.form-select {
+    border: 1px solid #dce2eb;
+    border-radius: 7px;
+    padding: 10px 12px;
+    font-size: 14px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #3976c5;
+    box-shadow: 0 0 0 3px rgba(57, 118, 197, 0.12);
+}
+
+/* ==============================
+   BUTTONS
+================================ */
+
+.btn {
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 9px 16px;
+}
+
+.btn-primary {
+    background: #2864ad;
+    border-color: #2864ad;
+}
+
+.btn-primary:hover {
+    background: #1d4e8c;
+    border-color: #1d4e8c;
+}
+
+.btn-success {
+    background: #198754;
+}
+
+.btn-danger {
+    background: #dc3545;
+}
+
+/* ==============================
+   STATUS AND SEVERITY BADGES
+================================ */
+
+.badge {
+    font-size: 11px;
+    padding: 6px 9px;
+    border-radius: 5px;
+}
+
+/* ==============================
+   DETECTION RESULT
+================================ */
+
+#detectionResult {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* ==============================
+   FOOTER
+================================ */
+
+footer {
+    border-top: 1px solid #e1e6ed;
+    padding-top: 18px;
+    font-size: 13px;
+}
+
+/* ==============================
+   RESPONSIVE DESIGN
+================================ */
+
+@media (max-width: 767px) {
+
+    .sidebar {
+        min-height: auto;
+        padding: 18px;
+    }
+
+    .sidebar nav {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 6px;
+    }
+
+    .sidebar nav a {
+        font-size: 12px;
+        padding: 10px;
+    }
+
+    main {
+        padding: 18px !important;
+    }
+
+    .dashboard-header {
+        padding: 18px;
+    }
+
+    .dashboard-header h2 {
+        font-size: 22px;
+    }
+
+    .dashboard-card {
+        min-height: 110px;
+    }
+
+    .dashboard-card h2 {
+        font-size: 24px;
+    }
+}

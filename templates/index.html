@@ -1,0 +1,394 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Inventory Shrinkage Detection System</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon"
+          href="{{ url_for('static', filename='images/favicon.ico') }}">
+</head>
+
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <!-- Sidebar -->
+        <aside class="col-md-2 sidebar">
+
+            <h4>Inventory</h4>
+            <p>Shrinkage System</p>
+
+            <nav>
+                <a href="/">Dashboard</a>
+                <a href="#summary">Summary</a>
+                <a href="#stock">Stock Overview</a>
+                <a href="#cases">Shrinkage Cases</a>
+                <a href="#detect-shrinkage">Detect Shrinkage</a>
+                <a href="#audit-history">Case Audit History</a>
+                <a href="#movements">Movements</a>
+                <a href="#low-stock">Low Stock</a>
+            </nav>
+
+        </aside>
+
+        <!-- Main Content -->
+        <main class="col-md-10 p-4">
+
+            <!-- Dashboard Header -->
+            <header class="dashboard-header mb-4">
+                <div>
+                    <h2>Inventory Dashboard</h2>
+                    <p>Monitor stock levels and detect unusual inventory loss.</p>
+                </div>
+
+                <span class="badge bg-primary">
+                    Inventory Monitoring
+                </span>
+            </header>
+
+            <!-- Dashboard Summary -->
+            <section id="summary">
+
+                <div class="row g-3">
+
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card dashboard-card">
+                            <h6>Total Cases</h6>
+                            <h2 id="totalCases">-</h2>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card dashboard-card">
+                            <h6>Estimated Loss</h6>
+                            <h2 id="totalLoss">-</h2>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card dashboard-card">
+                            <h6>High Risk Cases</h6>
+                            <h2 id="highCases">-</h2>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card dashboard-card">
+                            <h6>Open Cases</h6>
+                            <h2 id="openCases">-</h2>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card dashboard-card">
+                            <h6>Resolved Cases</h6>
+                            <h2 id="resolvedCases">0</h2>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card dashboard-card">
+                            <h6>Resolution Rate</h6>
+                            <h2 id="resolutionRate">0%</h2>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- Case Severity Breakdown -->
+            <section id="severity-breakdown" class="mt-5">
+
+                <h4>Case Severity Breakdown</h4>
+                <p class="text-muted">
+                    Understand the risk level of detected inventory shrinkage.
+                </p>
+
+                <div class="row g-3">
+
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card dashboard-card">
+                            <h6>Critical</h6>
+                            <h2 id="criticalBreakdown">0</h2>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card dashboard-card">
+                            <h6>High</h6>
+                            <h2 id="highBreakdown">0</h2>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card dashboard-card">
+                            <h6>Medium</h6>
+                            <h2 id="mediumBreakdown">0</h2>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card dashboard-card">
+                            <h6>Low</h6>
+                            <h2 id="lowBreakdown">0</h2>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- Case Status Breakdown -->
+            <section id="status-breakdown" class="mt-5">
+
+                <h4>Case Status Breakdown</h4>
+                <p class="text-muted">
+                    Monitor investigation progress and case resolution.
+                </p>
+
+                <div class="row g-3">
+
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card dashboard-card">
+                            <h6>Open</h6>
+                            <h2 id="openBreakdown">0</h2>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card dashboard-card">
+                            <h6>Investigating</h6>
+                            <h2 id="investigatingBreakdown">0</h2>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card dashboard-card">
+                            <h6>Pending Recount</h6>
+                            <h2 id="pendingRecountBreakdown">0</h2>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card dashboard-card">
+                            <h6>Resolved</h6>
+                            <h2 id="resolvedBreakdown">0</h2>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card dashboard-card">
+                            <h6>Closed</h6>
+                            <h2 id="closedBreakdown">0</h2>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card dashboard-card">
+                            <h6>False Positive</h6>
+                            <h2 id="falsePositiveBreakdown">0</h2>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- Shrinkage Cases -->
+            <section id="cases" class="mt-5">
+
+                <h4>Shrinkage Cases</h4>
+                <p class="text-muted">
+                    View detected inventory discrepancies and manage case status.
+                </p>
+
+                <div id="casesTable"></div>
+
+            </section>
+
+            <!-- Detect Shrinkage -->
+            <section id="detect-shrinkage" class="mt-5">
+
+                <h4>Detect Shrinkage</h4>
+                <p class="text-muted">
+                    Compare expected stock with physically counted stock.
+                </p>
+
+                <div class="card p-4">
+
+                    <form id="detectShrinkageForm">
+
+                        <div class="mb-3">
+
+                            <label for="countId" class="form-label">
+                                Inventory Count
+                            </label>
+
+                            <select id="countId"
+                                    class="form-select"
+                                    required>
+
+                                <option value="">
+                                    Select Inventory Count
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label for="productId" class="form-label">
+                                Product
+                            </label>
+
+                            <select id="productId"
+                                    class="form-select"
+                                    required>
+
+                                <option value="">
+                                    Select Product
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label for="countedQuantity" class="form-label">
+                                Physically Counted Quantity
+                            </label>
+
+                            <input
+                                type="number"
+                                id="countedQuantity"
+                                class="form-control"
+                                min="0"
+                                step="0.01"
+                                placeholder="Enter counted quantity"
+                                required
+                            >
+
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">
+                            Detect Shrinkage
+                        </button>
+
+                    </form>
+
+                    <div id="detectionResult" class="mt-3"></div>
+
+                </div>
+
+            </section>
+
+            <!-- Case Audit History -->
+            <section id="audit-history" class="mt-5">
+
+                <h4>Case Audit History</h4>
+                <p class="text-muted">
+                    Track case activities, status changes and investigation history.
+                </p>
+
+                <div class="card p-4">
+
+                    <div class="mb-3">
+
+                        <label for="auditCaseId" class="form-label">
+                            Select Case
+                        </label>
+
+                        <select id="auditCaseId" class="form-select">
+
+                            <option value="">
+                                Select Case
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <div id="caseEventsTable"></div>
+
+                </div>
+
+            </section>
+
+            <!-- Stock Overview -->
+            <section id="stock" class="mt-5">
+
+                <h4>Stock Overview</h4>
+                <p class="text-muted">
+                    View available stock and inventory value across locations.
+                </p>
+
+                <div id="stockTable"></div>
+
+            </section>
+
+            <!-- Low Stock Alerts -->
+            <section id="low-stock" class="mt-5">
+
+                <h4>Low Stock Alerts</h4>
+                <p class="text-muted">
+                    Identify products that are below the minimum stock level.
+                </p>
+
+                <div id="lowStockTable"></div>
+
+            </section>
+
+            <!-- Inventory Movements -->
+            <section id="movements" class="mt-5">
+
+                <h4>Recent Inventory Movements</h4>
+                <p class="text-muted">
+                    Track receipts, sales, transfers, adjustments and returns.
+                </p>
+
+                <div id="movementTable"></div>
+
+            </section>
+
+            <!-- Footer -->
+            <footer class="text-center mt-5 mb-3">
+
+                <p class="text-muted">
+                    Inventory Shrinkage Detection System
+                </p>
+
+            </footer>
+
+        </main>
+
+    </div>
+</div>
+
+<!-- Bootstrap JavaScript -->
+<script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+
+<!-- Dashboard JavaScript -->
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+
+</body>
+</html>
+
+
+
+
