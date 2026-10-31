@@ -14,25 +14,29 @@ This system helps businesses identify unusual inventory losses by comparing expe
 
 
 
+The application provides a centralized dashboard to monitor stock levels, investigate shrinkage cases, track inventory movements, and review audit activities across multiple locations.
+
+
+
 \## Features
 
 
 
-\- Inventory monitoring across multiple locations.
+\- \*\*Inventory Monitoring:\*\* Monitor stock across multiple stores and warehouses.
 
-\- Automatic shrinkage detection using stock discrepancies.
+\- \*\*Automatic Shrinkage Detection:\*\* Identify unusual inventory losses by comparing expected stock with physical counts.
 
-\- Risk classification: Critical, High, Medium, and Low.
+\- \*\*Risk Classification:\*\* Classify shrinkage cases as Critical, High, Medium, or Low based on estimated loss.
 
-\- Case management and status tracking.
+\- \*\*Case Management:\*\* Create, investigate, update, resolve, close, and reopen shrinkage cases.
 
-\- Case audit history and investigation tracking.
+\- \*\*Audit History:\*\* Maintain a traceable history of case activities and status changes.
 
-\- Inventory movement tracking: receipts, sales, transfers, adjustments, and returns.
+\- \*\*Inventory Movement Tracking:\*\* Track receipts, sales, transfers, adjustments, and returns.
 
-\- Low-stock and out-of-stock alerts.
+\- \*\*Low-Stock Alerts:\*\* Identify products that have reached or fallen below their minimum stock levels.
 
-\- Dashboard with estimated losses and case summaries.
+\- \*\*Dashboard Analytics:\*\* Display estimated losses, case summaries, stock information, and inventory activity.
 
 
 
@@ -42,11 +46,15 @@ This system helps businesses identify unusual inventory losses by comparing expe
 
 \### 1. Dashboard Overview
 
+
+
 !\[Dashboard](static/images/dashboard.png)
 
 
 
 \### 2. Summary
+
+
 
 !\[Summary](static/images/summary.png)
 
@@ -54,11 +62,15 @@ This system helps businesses identify unusual inventory losses by comparing expe
 
 \### 3. Shrinkage Case Management
 
+
+
 !\[Shrinkage Cases](static/images/shrinkage-cases.png)
 
 
 
 \### 4. Case Status Tracking
+
+
 
 !\[Case Status](static/images/case-status.png)
 
@@ -66,11 +78,15 @@ This system helps businesses identify unusual inventory losses by comparing expe
 
 \### 5. Shrinkage Detection and Audit History
 
+
+
 !\[Case Detection and Audit](static/images/case-detection-audit.png)
 
 
 
 \### 6. Stock Overview
+
+
 
 !\[Stock Overview](static/images/stock-overview.png)
 
@@ -78,11 +94,15 @@ This system helps businesses identify unusual inventory losses by comparing expe
 
 \### 7. Stock Overview Details
 
+
+
 !\[Stock Overview Details](static/images/stock-overview-details.png)
 
 
 
-\### 8. Low Stock Alerts
+\### 8. Low-Stock Alerts
+
+
 
 !\[Low Stock Alerts](static/images/low-stock-alert.png)
 
@@ -90,17 +110,23 @@ This system helps businesses identify unusual inventory losses by comparing expe
 
 \### 9. Inventory Movements
 
+
+
 !\[Inventory Movements](static/images/inventory-movements.png)
 
 
 
 \### 10. Inventory Movement Details
 
+
+
 !\[Inventory Movement Details](static/images/inventory-movements-details.png)
 
 
 
 \### 11. Summary Details
+
+
 
 !\[Summary Details](static/images/summary-details.png)
 
@@ -110,13 +136,19 @@ This system helps businesses identify unusual inventory losses by comparing expe
 
 
 
-\- \*\*Backend:\*\* Python, Flask
+| Category | Technologies |
 
-\- \*\*Frontend:\*\* HTML, CSS, JavaScript, Bootstrap
+|---|---|
 
-\- \*\*Database:\*\* MySQL
+| Backend | Python, Flask |
 
-\- \*\*Tools:\*\* VS Code, Git, GitHub
+| Frontend | HTML5, CSS3, JavaScript, Bootstrap |
+
+| Database | MySQL |
+
+| Tools | VS Code, Git, GitHub |
+
+| API Testing | Postman |
 
 
 
@@ -140,9 +172,35 @@ inventory-shrinkage-detection-system/
 
 │   ├── css/
 
+│   │   └── style.css
+
 │   ├── images/
 
+│   │   ├── dashboard.png
+
+│   │   ├── summary.png
+
+│   │   ├── shrinkage-cases.png
+
+│   │   ├── case-status.png
+
+│   │   ├── case-detection-audit.png
+
+│   │   ├── stock-overview.png
+
+│   │   ├── stock-overview-details.png
+
+│   │   ├── low-stock-alert.png
+
+│   │   ├── inventory-movements.png
+
+│   │   ├── inventory-movements-details.png
+
+│   │   └── summary-details.png
+
 │   └── js/
+
+│       └── dashboard.js
 
 ├── templates/
 
@@ -164,15 +222,43 @@ inventory-shrinkage-detection-system/
 
 
 
-The system calculates expected stock using inventory movement records and compares it with the physical inventory count.
+The system identifies potential inventory shrinkage by comparing expected stock with the physically counted stock.
+
+
+
+\*\*1. Expected Stock Calculation\*\*
+
+
+
+Expected stock is calculated using the recorded inventory movements, including receipts, sales, transfers, adjustments, and returns.
+
+
+
+\*\*2. Physical Stock Comparison\*\*
+
+
+
+The expected stock quantity is compared with the actual quantity entered during a physical inventory count.
+
+
+
+\*\*3. Variance Calculation\*\*
+
+
+
+`Stock Variance = Counted Quantity - Expected Quantity`
 
 
 
 \- Negative variance indicates potential inventory shrinkage.
 
-\- Positive or zero variance does not generate a shrinkage case.
+\- Zero variance indicates that the stock matches the expected quantity.
 
-\- Estimated loss is calculated as:
+\- Positive variance indicates excess stock and does not generate a shrinkage case.
+
+
+
+\*\*4. Estimated Loss Calculation\*\*
 
 
 
@@ -180,7 +266,49 @@ The system calculates expected stock using inventory movement records and compar
 
 
 
-Cases are classified based on estimated loss.
+\*\*5. Risk Classification\*\*
+
+
+
+Cases are classified according to estimated loss:
+
+
+
+| Severity | Estimated Loss |
+
+|---|---:|
+
+| Critical | ₹10,000 and above |
+
+| High | ₹5,000–₹9,999 |
+
+| Medium | ₹1,000–₹4,999 |
+
+| Low | Below ₹1,000 |
+
+
+
+\## Case Management and Audit Tracking
+
+
+
+The system supports a shrinkage case lifecycle:
+
+
+
+\- \*\*Created:\*\* A new shrinkage case is generated.
+
+\- \*\*Investigating:\*\* The case is under investigation.
+
+\- \*\*Resolved:\*\* The discrepancy has been addressed.
+
+\- \*\*Closed:\*\* The case investigation is completed.
+
+\- \*\*Reopened:\*\* A previously closed case can be reopened for further investigation.
+
+
+
+Case activities and status changes are recorded in the audit history to support traceability.
 
 
 
@@ -188,7 +316,21 @@ Cases are classified based on estimated loss.
 
 
 
-\### 1. Clone the repository
+\### Prerequisites
+
+
+
+\- Python 3.11 or later
+
+\- MySQL Server
+
+\- Git
+
+\- Visual Studio Code (recommended)
+
+
+
+\### 1. Clone the Repository
 
 
 
@@ -202,7 +344,7 @@ cd inventory-shrinkage-detection-system
 
 
 
-\### 2. Create a virtual environment
+\### 2. Create a Virtual Environment
 
 
 
@@ -214,7 +356,11 @@ python -m venv venv
 
 
 
-\### 3. Activate the environment (Windows PowerShell)
+\### 3. Activate the Virtual Environment
+
+
+
+For Windows PowerShell:
 
 
 
@@ -226,7 +372,7 @@ python -m venv venv
 
 
 
-\### 4. Install dependencies
+\### 4. Install Dependencies
 
 
 
@@ -242,9 +388,11 @@ pip install -r requirements.txt
 
 
 
-\- Create the MySQL database.
+\- Start your MySQL server.
 
-\- Configure database credentials in your `.env` file.
+\- Create the required database.
+
+\- Configure your database credentials in the `.env` file.
 
 \- Review `database/schema.sql` and `database/seed\_data.sql` before executing them.
 
@@ -252,7 +400,11 @@ pip install -r requirements.txt
 
 
 
-\### 6. Run the application
+Do not upload your `.env` file or database passwords to GitHub.
+
+
+
+\### 6. Run the Application
 
 
 
@@ -264,7 +416,11 @@ python app.py
 
 
 
-Open in your browser:
+\### 7. Open the Application
+
+
+
+Visit the following address in your browser:
 
 
 
@@ -276,29 +432,65 @@ Open in your browser:
 
 
 
-The database contains tables for:
+The application uses the following database entities:
 
 
 
-\- Locations
+| Table | Purpose |
 
-\- Products
+|---|---|
 
-\- Suppliers
+| locations | Stores store and warehouse information |
 
-\- Roles and Employees
+| products | Stores product details and unit costs |
 
-\- Shifts and Promotions
+| suppliers | Maintains supplier information |
 
-\- Stock Documents and Document Lines
+| roles | Stores employee roles |
 
-\- Inventory Movements
+| employees | Maintains employee information |
 
-\- Inventory Counts
+| shifts | Stores shift information |
 
-\- Shrinkage Cases
+| promotions | Maintains promotion details |
 
-\- Case Events
+| stock\_documents | Stores inventory document records |
+
+| stock\_document\_lines | Stores document line items |
+
+| inventory\_movements | Tracks stock movement transactions |
+
+| inventory\_counts | Stores physical stock count records |
+
+| shrinkage\_cases | Stores detected shrinkage cases |
+
+| case\_events | Maintains case activity and audit history |
+
+
+
+\## API Endpoints
+
+
+
+The application provides API endpoints for dashboard and inventory operations.
+
+
+
+| Endpoint | Purpose |
+
+|---|---|
+
+| `/api/test-db` | Check database connectivity |
+
+| `/api/dashboard/summary` | Retrieve dashboard summary |
+
+| `/api/stock` | Retrieve stock information |
+
+| `/api/cases` | Retrieve shrinkage cases |
+
+| `/api/movements` | Retrieve inventory movements |
+
+| `/api/low-stock` | Retrieve low-stock alerts |
 
 
 
@@ -310,25 +502,27 @@ The application has been tested for:
 
 
 
-\- Database connectivity
+\- MySQL database connectivity.
 
-\- Dashboard summary calculations
+\- Dashboard summary calculations.
 
-\- Stock calculations
+\- Expected stock calculations.
 
-\- Shrinkage case detection
+\- Shrinkage case detection.
 
-\- Input validation
+\- Input validation.
 
-\- Duplicate case prevention
+\- Duplicate case prevention.
 
-\- Case status transitions
+\- Risk classification.
 
-\- Audit history persistence
+\- Case status transitions.
 
-\- Low-stock alerts
+\- Audit history persistence.
 
-\- Inventory movement tracking
+\- Low-stock and out-of-stock alerts.
+
+\- Inventory movement tracking.
 
 
 
@@ -336,13 +530,15 @@ The application has been tested for:
 
 
 
-\- User authentication and role-based access.
+\- User authentication and role-based access control.
 
-\- Automated shrinkage alerts.
+\- Automated alerts for critical shrinkage cases.
 
 \- Advanced analytics and visual reports.
 
-\- Email notifications for critical discrepancies.
+\- Email notifications for inventory discrepancies.
+
+\- Exportable inventory and shrinkage reports.
 
 
 
@@ -354,5 +550,7 @@ The application has been tested for:
 
 
 
-GitHub: \[Jahanavi557](https://github.com/Jahanavi557)
+\- GitHub: \[Jahanavi557](https://github.com/Jahanavi557)
+
+\- Repository: \[Inventory Shrinkage Detection System](https://github.com/Jahanavi557/inventory-shrinkage-detection-system)
 
