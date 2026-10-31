@@ -36,6 +36,96 @@ This system helps businesses identify unusual inventory losses by comparing expe
 
 
 
+
+
+\## Application Screenshots
+
+
+
+\### 1. Dashboard Overview
+
+!\[Dashboard](static/images/dashboard.png)
+
+
+
+\### 2. Summary
+
+!\[Summary](static/images/summary.png)
+
+
+
+\### 3. Shrinkage Case Management
+
+!\[Shrinkage Cases](static/images/shrinkage-cases.png)
+
+
+
+\### 4. Case Status Tracking
+
+!\[Case Status](static/images/case-status.png)
+
+
+
+\### 5. Shrinkage Detection and Audit History
+
+!\[Case Detection and Audit](static/images/case-detection-audit.png)
+
+
+
+\### 6. Stock Overview
+
+!\[Stock Overview](static/images/stock-overview.png)
+
+
+
+\### 7. Stock Overview Details
+
+!\[Stock Overview Details](static/images/stock-overview-details.png)
+
+
+
+\### 8. Low Stock Alerts
+
+!\[Low Stock Alerts](static/images/low-stock-alert.png)
+
+
+
+\### 9. Inventory Movements
+
+!\[Inventory Movements](static/images/inventory-movements.png)
+
+
+
+\### 10. Inventory Movement Details
+
+!\[Inventory Movement Details](static/images/inventory-movements-details.png)
+
+
+
+\### 11. Summary Details
+
+!\[Summary Details](static/images/summary-details.png)
+
+
+
+
+
+
+
+\## Dashboard Preview
+
+
+
+!\[Inventory Shrinkage Detection Dashboard](static/images/dashboard.png)
+
+
+
+The dashboard displays total shrinkage cases, estimated inventory losses, high-risk cases, and open and resolved cases.
+
+
+
+
+
 \## Technology Stack
 
 
