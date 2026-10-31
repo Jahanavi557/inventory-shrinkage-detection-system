@@ -110,22 +110,6 @@ This system helps businesses identify unusual inventory losses by comparing expe
 
 
 
-
-
-\## Dashboard Preview
-
-
-
-!\[Inventory Shrinkage Detection Dashboard](static/images/dashboard.png)
-
-
-
-The dashboard displays total shrinkage cases, estimated inventory losses, high-risk cases, and open and resolved cases.
-
-
-
-
-
 \## Technology Stack
 
 
