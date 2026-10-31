@@ -124,9 +124,9 @@ Cases are classified based on estimated loss.
 
 ```bash
 
-git clone YOUR\_GITHUB\_REPOSITORY\_URL
+git clone https://github.com/Jahanavi557/inventory-shrinkage-detection-system.git
 
-cd inventory-shrinkage-app
+cd inventory-shrinkage-detection-system
 
 ```
 
